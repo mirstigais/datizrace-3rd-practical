@@ -81,6 +81,23 @@ salary_hour_model_final <- lm(Alga_stunda ~
 
 summary(salary_hour_model_final)
 
+# Predict vacancy hour rate by using newly created module
+new_vacancy <- data.frame(
+  Vakances_kategorija = "Informācijas tehnoloģijas / Telekomunikācijas",
+  Slodzes_tips = "Viena vesela slodze",
+  Darba_laika_veids = "Normālais darba laiks",
+  Pilseta = "Rīga",
+  Darba_stundas_nedela = 40
+)
+
+predicted_hourly_wage <- predict(
+  salary_hour_model_final,
+  newdata = new_vacancy
+)
+
+predicted_hourly_wage
+
+
 
 library(ggplot2)
 
