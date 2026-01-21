@@ -1,6 +1,6 @@
 # 3.1.1.
 
-data <- read.csv("BostonHousing.csv")
+data <- read.csv("BostonHousing.csv", header = TRUE)
 
 # For reproducibility
 set.seed(123)
@@ -113,7 +113,19 @@ predicted_MEDV <- as.numeric(as.character(predicted_MEDV))
 # Predicted MEDV is 20.4
 predicted_MEDV
 
+# 3.1.1.2 
 
+train_pred <- class::knn(
+  train = x_train_norm,
+  test  = x_train_norm,
+  cl    = y_train,
+  k     = best_k
+)
+
+train_pred <- as.numeric(as.character(train_pred))
+
+train_rmse <- sqrt(mean((train_pred - y_train)^2))
+train_rmse
 
 
 
